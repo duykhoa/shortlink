@@ -1,18 +1,25 @@
 class UrlsController < ApplicationController
+  STATUS_CODE = 200
+
   def shorten
-    short_url = shorten_url_service.shorten(full_url)
+    short_url = shorten_url_service.shorten(url)
     render json: response_for(short_url)
   end
 
-  def response_for(short_url)
+  def full_url
+    full_url = shorten_url_service.full_url(url)
+    render json: response_for(full_url)
+  end
+
+  def response_for(url)
     {
-      status: 200,
-      short_url: short_url
+      status: STATUS_CODE,
+      url: url
     }
   end
 
-  def full_url
-    params[:full_url]
+  def url
+    params[:url]
   end
 
   def shorten_url_service
