@@ -15,10 +15,9 @@
 GET /shorten
 ```
 
-```
-
 Params:
 
+```
 - url: the url want to shorten
 - user_id: id of user who want to convert
 ```
@@ -40,5 +39,6 @@ Params
 ```
   GET /users/:user_id/urls
 ```
+
 
 Thanks for reading!
