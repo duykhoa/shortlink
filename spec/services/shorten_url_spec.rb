@@ -17,4 +17,18 @@ describe ShortenUrl do
       expect(short_url).to eq "http://short.link/1"
     end
   end
+
+  describe "get full url back" do
+    it "get full_url of existed short url" do
+      full_url = "http://google.com"
+      short_url = shorten_service.shorten(full_url)
+
+      expect(shorten_service.full_url(short_url)).to eq full_url
+    end
+
+    it "get full_url of non existed short url" do
+      short_url = "http://short.link/undefined"
+      expect(shorten_service.full_url(short_url)).to be nil
+    end
+  end
 end
